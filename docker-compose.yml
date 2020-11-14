@@ -1,0 +1,17 @@
+
+version: '3'
+
+services:
+  app:
+    #container_name: adopt-a-drain
+    image: wilfongjt/heroku-nuxtjs-app
+    build:
+      context: ./smpl-app/
+    command: >
+      bash -c "npm install && npm run dev"
+    volumes:
+      - ./smpl-app:/usr/src
+    ports:
+      - "3000:3000"
+    environment:
+      - LB_ENV=${LB_ENV}
